@@ -8,7 +8,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-void init_matrix(int N, double** A) {
+void Constraints(double* x, double* F);		//To do
+void JacobiMatrix(double** J, double* x);		//To do
+void NewtonRaphson(double* x);		//To do
+
+void init_matrix(int N, double** A) {        //OLD  //Writes the A matrix
 	for (int i = 0; i < N; i++)
 		for (int j = 0; j < N; j++)
 			A[i][j] = 0.;
@@ -24,16 +28,11 @@ void init_matrix(int N, double** A) {
 	A[8][7] = 7.;  A[8][8] = 2.;
 }
 
-void init_vector(int N, double* b) {
-	b[0] = 0;
-	b[1] = 25;
-	b[2] = 37.5;
-	b[3] = 0;
-	b[4] = 16;
-	b[5] = 32;
-	b[6] = 0;
-	b[7] = 53;
-	b[8] = 53;
+void initial_approx(double* x) {		     //Initial approximation. It's my guess
+	b[0] = 2;
+	b[1] = 3.5;
+	b[2] = 2.7;
+	b[3] = 5.5;
 }
 
 void print_vector(int N, double* b) {
@@ -42,24 +41,28 @@ void print_vector(int N, double* b) {
 }
 
 int main() {
-	int N = 9;
+	int N = 4;
 	double** A, * A_row;
-
-	A = (double**)malloc(N * sizeof(double*));
-	A_row = (double*)malloc(N * N * sizeof(double));
-	for (int i = 0; i < N; i++) {
-		A[i] = &A_row[i * N];
-	}
-	init_matrix(N, A);
-
-	double* b;
-	b = (double*)malloc(N * sizeof(double));
-	init_vector(N, b);
 
 	double* x;
 	x = (double*)malloc(N * sizeof(double));
+	initial_approx(x);
 
-	gauss(N, A, x, b);
+	//A = (double**)malloc(N * sizeof(double*));
+	//A_row = (double*)malloc(N * N * sizeof(double));
+	//for (int i = 0; i < N; i++) {
+	//	A[i] = &A_row[i * N];
+	//}
+	//init_matrix(N, A);
+
+	//double* b;
+	//b = (double*)malloc(N * sizeof(double));
+	//init_vector(N, b);
+
+	//double* x;
+	//x = (double*)malloc(N * sizeof(double));
+
+	
 
 	print_vector(N, x);
 
