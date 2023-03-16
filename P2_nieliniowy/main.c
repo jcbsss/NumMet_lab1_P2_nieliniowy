@@ -49,7 +49,7 @@ void JacobiMatrix(double** J, double* x) {		//METHOD1//Calculates Jacobi matrix 
 	J[3][0] = 0; J[3][1] = 0; J[3][2] = -6 + 2*x[2]; J[3][3] = 2*x[3];
 }
 void JacobiMatrixFD(double** J, double* x, int N) {  //METHOD2//Calculates appoximated Jacobi matrix, using Central Finite Difference method
-	double epsilon = 1e-7;
+	double epsilon = 1e-8;
 	double* x_l;									//ALLOCation of x_LEFT vector
 	x_l = (double*)malloc(N * sizeof(double));
 	double* x_r;									//ALLOCation of x_RIGHT vector
